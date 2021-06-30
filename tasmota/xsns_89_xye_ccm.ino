@@ -164,7 +164,7 @@ void XYEInit(void)
 
 #ifdef XYE_DEBUG
   AddLog(LOG_LEVEL_INFO, PSTR("XYE: Starting Tx %d Rx %d"),
-	 Pin(GPIO_XYE_TX), Pin(GPIO_XYE_RX));
+	 Pin(GPIO_TCP_TX), Pin(GPIO_TCP_RX));
 #endif
 
   if (!PinUsed(GPIO_TCP_RX) || !PinUsed(GPIO_TCP_TX))
