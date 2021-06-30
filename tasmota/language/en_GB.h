@@ -1068,7 +1068,7 @@
 #define D_NEOPOOL_PH_HIGH                 "too high"          // ph Alarms
 #define D_NEOPOOL_PH_LOW                  "too low"
 #define D_NEOPOOL_PUMP_TIME_EXCEEDED      "pump time exceeded"
-//xsns_88_xye_ccm.ino
+//xsns_89_xye_ccm.ino
 #define D_SENSOR_XYE_RX   "XYE RX"
 #define D_SENSOR_XYE_TX   "XYE TX"
 
