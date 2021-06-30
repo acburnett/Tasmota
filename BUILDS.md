@@ -204,6 +204,7 @@ m = minimal, l = lite, t = tasmota, k = knx, s = sensors, i = ir, d = display
 | USE_HRE               | - | - | - / x | - | x | - | - |
 | USE_A4988_STEPPER     | - | - | - / - | - | - | - | - |
 | USE_NEOPOOL           | - | - | - / - | - | - | - | - |
+| USE_XYE_CCM           | - | - | - / - | - | - | - | - |
 |                       |   |   |       |   |   |   |   |
 | Feature or Sensor     | m | l | t     | k | s | i | d | Remarks
 | USE_DISPLAY           | - | - | - / - | - | - | - | x |
