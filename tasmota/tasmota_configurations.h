@@ -220,6 +220,7 @@
 #define USE_HRE                                  // Add support for Badger HR-E Water Meter (+1k4 code)
 //#define USE_A4988_STEPPER                        // Add support for A4988/DRV8825 stepper-motor-driver-circuit (+10k5 code)
 //#define USE_THERMOSTAT                           // Add support for Thermostat
+//#define USE_XYE_CCM                              // Add for XYE CCM
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #endif  // FIRMWARE_SENSORS
@@ -328,6 +329,7 @@
   #define USE_DISPLAY_ST7789                     // [DisplayModel 12] Enable ST7789 module
   #define USE_DISPLAY_SSD1331                    // [DisplayModel 14] Enable SSD1331 module
 
+#undef USE_XYE_CCM                               // Disable support for XYE CCM
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #endif  // FIRMWARE_DISPLAYS
@@ -452,6 +454,7 @@
 #undef USE_TX23_WIND_SENSOR                      // Disable support for La Crosse TX23 anemometer
 #undef USE_WINDMETER                             // Disable support for analog anemometer (+2k2 code)
 #undef USE_RC_SWITCH                             // Disable support for RF transceiver using library RcSwitch
+#undef USE_XYE_CCM                               // Disable support for XYE CCM
 #undef USE_RF_SENSOR                             // Disable support for RF sensor receiver (434MHz or 868MHz) (+0k8 code)
 #undef USE_HRE                                   // Disable support for Badger HR-E Water Meter (+1k4 code)
 #undef USE_A4988_STEPPER                         // Disable support for A4988_Stepper
@@ -745,6 +748,7 @@
 #undef USE_HRE                                   // Disable support for Badger HR-E Water Meter (+1k4 code)
 #undef USE_A4988_STEPPER                         // Disable support for A4988_Stepper
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
+#undef USE_XYE_CCM                               // Disable support for XYE CCM
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #endif  // FIRMWARE_LITE
@@ -889,6 +893,7 @@
 #undef USE_A4988_STEPPER                         // Disable support for A4988_Stepper
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
 #undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
+#undef USE_XYE_CCM                               // Disable support for XYE CCM
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 
