@@ -922,6 +922,9 @@
                                                    // For details on the configuration please see the header of tasmota/xdrv_48_timeprop.ino
 // #define USE_PID                                 // Add suport for the PID  feature (+11k2 code)
                                                    // For details on the configuration please see the header of tasmota/xdrv_49_pid.ino
+// -- XYE interface driver --------------------------
+#define USE_XYE_CCM                                // Add support for being a XYE bus CCM
+
 // -- End of general directives ---------------------
 
 /*********************************************************************************************\
