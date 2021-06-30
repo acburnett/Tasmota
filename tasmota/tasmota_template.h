@@ -169,6 +169,8 @@ enum UserSelectablePins {
   GPIO_I2S_OUT_DATA, GPIO_I2S_OUT_CLK, GPIO_I2S_OUT_SLCT,
   GPIO_I2S_IN_DATA,  GPIO_I2S_IN_CLK,  GPIO_I2S_IN_SLCT,
   GPIO_INTERRUPT,
+  GPIO_XYE_TX,         // XYE TX pin
+  GPIO_XYE_RX,         // XYE RX pin
   GPIO_SENSOR_END };
 
 enum ProgramSelectablePins {
@@ -358,6 +360,7 @@ const char kSensorNames[] PROGMEM =
   D_SENSOR_I2S_OUT_DATA "|" D_SENSOR_I2S_OUT_CLK "|" D_SENSOR_I2S_OUT_SLCT "|"
   D_SENSOR_I2S_IN_DATA  "|" D_SENSOR_I2S_IN_CLK  "|" D_SENSOR_I2S_IN_SLCT  "|"
   D_SENSOR_INTERRUPT "|"
+  D_SENSOR_XYE_TX "|" D_SENSOR_XYE_RX "|"
   ;
 
 const char kSensorNamesFixed[] PROGMEM =
@@ -854,6 +857,11 @@ const uint16_t kGpioNiceList[] PROGMEM = {
   AGPIO(GPIO_MAX7219DIN),
   AGPIO(GPIO_MAX7219CS),
 #endif  // USE_DISPLAY_MAX7219
+
+#ifdef USE_XYE_CCM
+  AGPIO(GPIO_XYE_RX),
+  AGPIO(GPIO_XYE_TX),
+#endif
 
 /*-------------------------------------------------------------------------------------------*\
  * ESP32 specifics
