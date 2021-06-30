@@ -167,14 +167,14 @@ void XYEInit(void)
 	 Pin(GPIO_XYE_TX), Pin(GPIO_XYE_RX));
 #endif
 
-  if (!PinUsed(GPIO_XYE_RX) || !PinUsed(GPIO_XYE_TX))
+  if (!PinUsed(GPIO_TCP_RX) || !PinUsed(GPIO_TCP_TX))
     return;
 
   memset(XYE.units, 0, sizeof(XYE.units));
 
   XYE.buffer = (uint8_t *)malloc(XYE_BUFFER_SIZE);
   if (XYE.buffer != nullptr) {
-    XYESerial = new TasmotaSerial(Pin(GPIO_XYE_RX), Pin(GPIO_XYE_TX), 2);
+    XYESerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
     AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), XYESerial);
     if (XYESerial->begin(4800)) {
       AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), XYESerial->hardwareSerial());
