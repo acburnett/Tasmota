@@ -33,7 +33,7 @@
 
 #include <TasmotaSerial.h>
 
-TasmotaSerial *TCPSerial = nullptr;
+TasmotaSerial *XYESerial = nullptr;
 
 typedef struct
 {
@@ -174,15 +174,15 @@ void XYEInit(void)
 
   XYE.buffer = (uint8_t *)malloc(XYE_BUFFER_SIZE);
   if (XYE.buffer != nullptr) {
-    TCPSerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
-    AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), TCPSerial);
-    if (TCPSerial->begin(4800)) {
-      AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), TCPSerial->hardwareSerial());
-      if (TCPSerial->hardwareSerial()) {
+    XYESerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
+    AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), XYESerial);
+    if (XYESerial->begin(4800)) {
+      AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), XYESerial->hardwareSerial());
+      if (XYESerial->hardwareSerial()) {
 	AddLog(LOG_LEVEL_INFO, PSTR("XYE: Claimed"));
 	ClaimSerial();
       }
-      TCPSerial->flush();
+      XYESerial->flush();
 
       /* the CCM01 uses a 130ms send rythm, set ssleep to 10ms so that we can match that */
       //ssleep = 10;
