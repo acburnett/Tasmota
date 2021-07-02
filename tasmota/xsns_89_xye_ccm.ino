@@ -33,7 +33,7 @@
 
 #include <TasmotaSerial.h>
 
-TasmotaSerial *XYESerial = nullptr;
+TasmotaSerial *TCPSerial = nullptr;
 
 typedef struct
 {
@@ -175,14 +175,14 @@ void XYEInit(void)
   XYE.buffer = (uint8_t *)malloc(XYE_BUFFER_SIZE);
   if (XYE.buffer != nullptr) {
     XYESerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
-    AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), XYESerial);
+    AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), TCPSerial);
     if (XYESerial->begin(4800)) {
-      AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), XYESerial->hardwareSerial());
+      AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), TCPSerial->hardwareSerial());
       if (XYESerial->hardwareSerial()) {
 	AddLog(LOG_LEVEL_INFO, PSTR("XYE: Claimed"));
 	ClaimSerial();
       }
-      XYESerial->flush();
+      TCPSerial->flush();
 
       /* the CCM01 uses a 130ms send rythm, set ssleep to 10ms so that we can match that */
       //ssleep = 10;
@@ -213,9 +213,9 @@ void XYEDebugData(const char *tag, uint8 *buffer, uint8_t len, uint8_t crc)
 
 void XYESerialInput(void)
 {
-  while (XYESerial->available())
+  while (TCPSerial->available())
   {
-    uint8_t serial_in_byte = XYESerial->read();
+    uint8_t serial_in_byte = TCPSerial->read();
 
 #ifdef XYE_DEBUG
     //AddLog_P2(LOG_LEVEL_INFO, PSTR("XYE: Serial In Byte 0x%02x"), serial_in_byte);
@@ -343,7 +343,7 @@ void XYESendRequest(uint8_t cmd, uint8_t device)
 
   q[14] = XYECrc8(&q[0], 16);
 
-  XYESerial->write(&q[0], sizeof(q));
+  TCPSerial->write(&q[0], sizeof(q));
 
   XYE.query_id = (XYE.query_id + 1) % 64;
 }
@@ -364,7 +364,7 @@ void XYESetUnit(uint8_t unit)
 
   XYEDebugData(PSTR("TX"), &XYE.cmnd[0], sizeof(XYE.cmnd), XYE.cmnd[14]);
 
-  XYESerial->write(&XYE.cmnd[0], sizeof(XYE.cmnd));
+  TCPSerial->write(&XYE.cmnd[0], sizeof(XYE.cmnd));
 
   XYE.last_cmd = XYE.cmnd[1];
 }
@@ -807,7 +807,7 @@ void XYETaskLoop( void * pvParameters )
 
 void XYETaskSetup()
 {
-  if (!XYESerial)
+  if (!TCPSerial)
     return;
 
   xTaskCreatePinnedToCore(
@@ -836,7 +836,7 @@ bool Xsns89(uint8_t function)
 #endif
   }
 
-  if (!XYESerial) {
+  if (!TCPSerial) {
     return result;
   }
 
