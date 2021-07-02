@@ -174,11 +174,11 @@ void XYEInit(void)
 
   XYE.buffer = (uint8_t *)malloc(XYE_BUFFER_SIZE);
   if (XYE.buffer != nullptr) {
-    XYESerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
+    TCPSerial = new TasmotaSerial(Pin(GPIO_TCP_RX), Pin(GPIO_TCP_TX), 2);
     AddLog(LOG_LEVEL_INFO, PSTR("XYE: Serial %p"), TCPSerial);
-    if (XYESerial->begin(4800)) {
+    if (TCPSerial->begin(4800)) {
       AddLog(LOG_LEVEL_INFO, PSTR("XYE: Baud Set %d"), TCPSerial->hardwareSerial());
-      if (XYESerial->hardwareSerial()) {
+      if (TCPSerial->hardwareSerial()) {
 	AddLog(LOG_LEVEL_INFO, PSTR("XYE: Claimed"));
 	ClaimSerial();
       }
